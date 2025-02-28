@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyamvada Parihar - Portfolio</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        * {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .fade-enter {
+            opacity: 0;
+        }
+        .fade-enter-active {
+            opacity: 1;
+            transition: opacity 300ms ease-in;
+        }
+        .fade-exit {
+            opacity: 1;
+        }
+        .fade-exit-active {
+            opacity: 0;
+            transition: opacity 300ms ease-out;
+        }
+        .nav-item {
+            transition: all 0.3s ease;
+        }
+        .nav-item:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-[#fbe6d4]">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const App = () => {
+            const [currentPage, setCurrentPage] = React.useState('personal');
+
+            const PersonalDetails = () => (
+                <div className="p-6 bg-[#f8d5b8] rounded-lg shadow-lg">
+                    <h3 className="text-2xl mb-4">Personal Details</h3>
+                    <div className="space-y-3">
+                        <p><i className="bi bi-envelope"></i> pariharprivamvada@gmail.com</p>
+                        <p><i className="bi bi-phone"></i> +91 9689264431</p>
+                        <p><i className="bi bi-geo-alt"></i> Pune, Maharashtra</p>
+                        <p><i className="bi bi-calendar3"></i> September 26 2003</p>
+                    </div>
+                </div>
+            );
+
+            const About = () => (
+                <div className="p-6 bg-[#f8d5b8] rounded-lg shadow-lg">
+                    <h3 className="text-2xl mb-4">About</h3>
+                    <p className="text-lg">Content for About section...</p>
+                </div>
+            );
+
+            const Resume = () => (
+                <div className="p-6 bg-[#f8d5b8] rounded-lg shadow-lg">
+                    <h3 className="text-2xl mb-4">Resume</h3>
+                    <p className="text-lg">Professional experience and education...</p>
+                </div>
+            );
+
+            const Certificates = () => (
+                <div className="p-6 bg-[#f8d5b8] rounded-lg shadow-lg">
+                    <h3 className="text-2xl mb-4">Certificates</h3>
+                    <p className="text-lg">Certifications and achievements...</p>
+                </div>
+            );
+
+            const Projects = () => (
+                <div className="p-6 bg-[#f8d5b8] rounded-lg shadow-lg">
+                    <h3 className="text-2xl mb-4">Projects</h3>
+                    <p className="text-lg">Featured projects and work samples...</p>
+                </div>
+            );
+
+            const Contact = () => (
+                <div className="p-6 bg-[#f8d5b8] rounded-lg shadow-lg">
+                    <h3 className="text-2xl mb-4">Contact</h3>
+                    <form className="space-y-4">
+                        <input type="text" placeholder="Name" className="w-full p-2 rounded"/>
+                        <input type="email" placeholder="Email" className="w-full p-2 rounded"/>
+                        <textarea placeholder="Message" className="w-full p-2 rounded" rows="4"></textarea>
+                        <button className="bg-[#8b5e34] text-white px-4 py-2 rounded hover:bg-[#6d4a29]">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            );
+
+            const renderContent = () => {
+                switch(currentPage) {
+                    case 'personal': return <PersonalDetails />;
+                    case 'about': return <About />;
+                    case 'resume': return <Resume />;
+                    case 'certificates': return <Certificates />;
+                    case 'projects': return <Projects />;
+                    case 'contact': return <Contact />;
+                    default: return <PersonalDetails />;
+                }
+            };
+
+            return (
+                <div className="container mx-auto px-4 py-8 max-w-6xl">
+                    <header className="text-center mb-12">
+                        <h1 className="text-4xl md:text-5xl mb-2">Hey There!</h1>
+                        <h2 className="text-3xl md:text-4xl text-[#8b5e34]">I'm Priyamvada Parihar</h2>
+                    </header>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="nav-item cursor-pointer" onClick={() => setCurrentPage('personal')}>
+                            <div className={`p-4 rounded-lg ${currentPage === 'personal' ? 'bg-[#f8d5b8]' : 'bg-[#fad0b0]'} hover:shadow-lg transition-all duration-300`}>
+                                Personal Details
+                            </div>
+                        </div>
+                        <div className="nav-item cursor-pointer" onClick={() => setCurrentPage('about')}>
+                            <div className={`p-4 rounded-lg ${currentPage === 'about' ? 'bg-[#f8d5b8]' : 'bg-[#fad0b0]'} hover:shadow-lg transition-all duration-300`}>
+                                About
+                            </div>
+                        </div>
+                        <div className="nav-item cursor-pointer" onClick={() => setCurrentPage('resume')}>
+                            <div className={`p-4 rounded-lg ${currentPage === 'resume' ? 'bg-[#f8d5b8]' : 'bg-[#fad0b0]'} hover:shadow-lg transition-all duration-300`}>
+                                Resume
+                            </div>
+                        </div>
+                        <div className="nav-item cursor-pointer" onClick={() => setCurrentPage('certificates')}>
+                            <div className={`p-4 rounded-lg ${currentPage === 'certificates' ? 'bg-[#f8d5b8]' : 'bg-[#fad0b0]'} hover:shadow-lg transition-all duration-300`}>
+                                Certificates
+                            </div>
+                        </div>
+                        <div className="nav-item cursor-pointer md:col-span-2 lg:col-span-1" onClick={() => setCurrentPage('projects')}>
+                            <div className={`p-4 rounded-lg ${currentPage === 'projects' ? 'bg-[#f8d5b8]' : 'bg-[#fad0b0]'} hover:shadow-lg transition-all duration-300`}>
+                                Projects
+                            </div>
+                        </div>
+                        <div className="nav-item cursor-pointer" onClick={() => setCurrentPage('contact')}>
+                            <div className={`p-4 rounded-lg ${currentPage === 'contact' ? 'bg-[#f8d5b8]' : 'bg-[#fad0b0]'} hover:shadow-lg transition-all duration-300`}>
+                                Contact
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="mt-8">
+                        {renderContent()}
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
